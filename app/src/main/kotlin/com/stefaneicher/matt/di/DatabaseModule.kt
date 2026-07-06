@@ -19,6 +19,7 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): MattDatabase =
         Room.databaseBuilder(context, MattDatabase::class.java, "matt_db")
+            // TODO: Replace with proper Migration objects before production release to avoid data loss
             .fallbackToDestructiveMigration()
             .build()
 

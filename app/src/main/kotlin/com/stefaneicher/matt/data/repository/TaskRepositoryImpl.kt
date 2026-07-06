@@ -30,7 +30,7 @@ class TaskRepositoryImpl @Inject constructor(
 
     override suspend fun completeTask(taskId: String, childId: String): Result<Unit> = runCatching {
         val existing = taskDao.getTaskById(taskId)
-            ?: error("Task $taskId not found")
+            ?: error("Task not found")
         taskDao.updateTask(
             existing.copy(
                 isCompleted = true,

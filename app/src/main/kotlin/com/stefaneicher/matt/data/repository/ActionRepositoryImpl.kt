@@ -25,8 +25,8 @@ class ActionRepositoryImpl @Inject constructor(
     }
 
     override suspend fun redeemAction(actionId: String, childId: String): Result<Unit> = runCatching {
-        // In full implementation: deduct points from PointAccount and create FamilyEvent
-        // For now: no-op stub (Firestore transaction would go here)
+        // TODO: Implement full point deduction + FamilyEvent creation via Firestore transaction (Phase 2)
+        // For now: no-op stub returns success without mutating state
     }
 
     override suspend fun deleteAction(actionId: String): Result<Unit> = runCatching {

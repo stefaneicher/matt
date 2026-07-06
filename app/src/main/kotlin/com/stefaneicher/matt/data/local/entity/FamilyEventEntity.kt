@@ -26,7 +26,7 @@ data class FamilyEventEntity(
         familyId = familyId,
         childId = childId,
         actorId = actorId,
-        type = EventType.valueOf(type),
+        type = runCatching { EventType.valueOf(type) }.getOrDefault(EventType.TASK_COMPLETED),
         title = title,
         description = description,
         pointsDelta = pointsDelta,
