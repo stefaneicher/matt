@@ -1,4 +1,4 @@
-# Matt – Kinderbonus-App 🌟
+# Matt – Kinderbonus-System 🌟
 
 Ein spielerisches Familien-Bonus-System für Android. Eltern vergeben Aufgaben mit Punkten (1–10), Kinder sammeln Punkte und können diese für Aktionen einlösen. Ereignisse werden als animierter Feed (Event Scroll) mit Lottie-Animationen visualisiert.
 
