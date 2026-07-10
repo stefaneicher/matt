@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import com.stefaneicher.matt.domain.model.Character
+import com.stefaneicher.matt.presentation.theme.MattTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -79,3 +81,10 @@ private fun sampleCharacters() = listOf(
     Character("3", "Wasserzauberin", "Weise und geduldig!", "🧙‍♀️", 50),
     Character("4", "Drachenwächter", "Hüter aller Schätze!", "🐉", 100)
 )
+@Preview(showBackground = true, widthDp = 412, heightDp = 915)
+@Composable
+private fun CharactersScreenPreview() {
+    MattTheme {
+        CharactersScreen(onBack = {})
+    }
+}

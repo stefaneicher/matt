@@ -50,6 +50,8 @@ Bei jedem Push auf `main`/`develop` und bei Pull Requests:
 - Workflow: **Preview Deploy**
 - Trigger: Pull Request auf `main`/`develop` oder manuell via `workflow_dispatch`
 - Ergebnis: Downloadbares Artifact `preview-apk` (Debug-APK, 7 Tage verfügbar)
+- Zusätzlich: Artifact `preview-screenshots` mit Paparazzi-Screenshots und HTML-Report für UI-Visualisierung im Review
+- Compose-Previews und Snapshot-Tests sind aktuell für `HomeScreen` und `CharactersScreen` eingerichtet
 
 ### Continuous Delivery
 Bei Tag-Push (`v*.*.*`) oder manuell via `workflow_dispatch`:

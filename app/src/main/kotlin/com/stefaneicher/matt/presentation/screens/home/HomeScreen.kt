@@ -10,7 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.stefaneicher.matt.presentation.theme.MattTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -107,5 +109,18 @@ private fun HomeCard(
                 style = MaterialTheme.typography.titleLarge
             )
         }
+    }
+}
+
+@Preview(showBackground = true, widthDp = 412, heightDp = 915)
+@Composable
+private fun HomeScreenPreview() {
+    MattTheme {
+        HomeScreen(
+            onNavigateToTasks = {},
+            onNavigateToPoints = {},
+            onNavigateToEvents = {},
+            onNavigateToCharacters = {}
+        )
     }
 }

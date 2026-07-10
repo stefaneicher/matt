@@ -24,15 +24,28 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: "17"
+          distribution: "temurin"
           cache: gradle
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Record UI preview snapshots
+        run: ./gradlew recordPaparazziDebug --stacktrace
+
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
+
+      - name: Upload preview screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-screenshots
+          path: |
+            app/src/test/snapshots/**/*.png
+            app/build/reports/paparazzi/**
+          if-no-files-found: error
+          retention-days: 7
 
       - name: Upload preview APK
         uses: actions/upload-artifact@v4
@@ -45,7 +58,8 @@ jobs:
       - name: Add run summary
         run: |
           {
-            echo "## Preview APK ready"
+            echo "## Preview assets ready"
             echo ""
-            echo "Download artifact **preview-apk** from this run."
+            echo "- Download artifact **preview-apk** for the installable build."
+            echo "- Download artifact **preview-screenshots** for the Paparazzi screenshots and HTML report."
           } >> "$GITHUB_STEP_SUMMARY"
