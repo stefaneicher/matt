@@ -81,6 +81,7 @@ private fun sampleCharacters() = listOf(
     Character("3", "Wasserzauberin", "Weise und geduldig!", "🧙‍♀️", 50),
     Character("4", "Drachenwächter", "Hüter aller Schätze!", "🐉", 100)
 )
+
 @Preview(showBackground = true, widthDp = 412, heightDp = 915)
 @Composable
 private fun CharactersScreenPreview() {
