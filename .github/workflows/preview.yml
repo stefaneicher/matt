@@ -1,0 +1,51 @@
+name: Preview Deploy
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ main, develop ]
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview-apk:
+    name: Build Preview APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Upload preview APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Add run summary
+        run: |
+          {
+            echo "## Preview APK ready"
+            echo ""
+            echo "Download artifact **preview-apk** from this run."
+          } >> "$GITHUB_STEP_SUMMARY"

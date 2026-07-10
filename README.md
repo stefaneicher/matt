@@ -46,6 +46,11 @@ Bei jedem Push auf `main`/`develop` und bei Pull Requests:
 - Unit-Tests
 - Debug-APK-Build
 
+### Preview Deploy
+- Workflow: **Preview Deploy**
+- Trigger: Pull Request auf `main`/`develop` oder manuell via `workflow_dispatch`
+- Ergebnis: Downloadbares Artifact `preview-apk` (Debug-APK, 7 Tage verfügbar)
+
 ### Continuous Delivery
 Bei Tag-Push (`v*.*.*`) oder manuell via `workflow_dispatch`:
 1. Release-AAB signieren
